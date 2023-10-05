@@ -181,6 +181,76 @@ namespace w15_1.Models
             string connection = ConfigurationManager.ConnectionStrings["ConnectionDB"]
             .ConnectionString.ToString();
             SqlConnection conn = new SqlConnection(connection);
+            SqlCommand cmd1 = new SqlCommand("SELECT * , Nome FROM Spedizione INNER JOIN Clienti ON Spedizione.Cliente=Clienti.IdCliente inner join Aggiornamenti on Spedizione.IdSpedizione=Aggiornamenti.IdSpedizioni inner join StatoSpedizione on Aggiornamenti.StatoSpedizione=StatoSpedizione.IdStato where Cliente=@id ", conn);
+            SqlDataReader sqlreader1;
+            conn.Open();
+            cmd1.Parameters.AddWithValue("id", HttpContext.Current.Request.QueryString["Id"]);
+            sqlreader1 = cmd1.ExecuteReader();
+            Spedizioni p = new Spedizioni();
+            while (sqlreader1.Read())
+            {
+               
+                p.NomeCliente = sqlreader1["Nome"].ToString();
+                p.Città = sqlreader1["Città"].ToString();
+                p.Indirizzo = sqlreader1["Indirizzo"].ToString();
+                p.NominativoDestinatario = sqlreader1["NominativoDestinatario"].ToString();
+                p.CostoSpedizione = Convert.ToDouble(sqlreader1["CostoSpedizione"]);
+                p.DataSpedizione = Convert.ToDateTime(sqlreader1["DataSpedizione"]);
+                p.DataC = Convert.ToDateTime(sqlreader1["DataConsegna"]).ToShortDateString();
+                p.DataS = Convert.ToDateTime(sqlreader1["DataSpedizione"]).ToShortDateString();
+                p.DataConsegna = Convert.ToDateTime(sqlreader1["DataConsegna"]);
+                p.Peso = Convert.ToInt16(sqlreader1["Peso"]);
+                p.IdSpedizione = Convert.ToInt16(sqlreader1["IdSpedizione"]);
+                p.Nomestato = sqlreader1["NomeStato"].ToString();
+                p.Idstato = Convert.ToInt16(sqlreader1["IdStato"]);
+                p.StatoSpedizione = Convert.ToInt16(sqlreader1["StatoSpedizione"]);
+                p.IdAggiornamento = Convert.ToInt16(sqlreader1["IdAggiornamento"]);
+                p.Luogo = sqlreader1["Luogo"].ToString();
+                p.Descrizione = sqlreader1["Descrizione"].ToString();
+                p.DataOraAggiornamento = Convert.ToDateTime(sqlreader1["DataOraAggiornamento"]);
+                p.IdSpedizioni = Convert.ToInt16(sqlreader1["IdSpedizioni"]);
+               
+
+            }
+            conn.Close();
+
+            SqlCommand cmd4 = new SqlCommand();
+            cmd4.Connection = conn;
+
+            //cmd4.CommandText = "DELETE FROM StatoSpedizione where Idstato =@id";
+            //cmd4.Parameters.AddWithValue("id", p.Idstato);
+
+            //conn.Open();
+
+            //cmd4.ExecuteNonQuery();
+
+            //conn.Close();
+
+
+            SqlCommand cmd2 = new SqlCommand();
+            cmd2.Connection = conn;
+
+            cmd2.CommandText = "DELETE FROM Aggiornamenti where IdSpedizioni =@id";
+            cmd2.Parameters.AddWithValue("id", p.IdSpedizioni);
+
+            conn.Open();
+
+            cmd2.ExecuteNonQuery();
+
+            conn.Close();
+
+            conn.Open();
+            SqlCommand cmd3 = new SqlCommand();
+            cmd3.Connection = conn;
+            cmd3.CommandText = "DELETE FROM Spedizione where Cliente =@id";
+            cmd3.Parameters.AddWithValue("id", HttpContext.Current.Request.QueryString["Id"]);
+
+
+
+            cmd3.ExecuteNonQuery();
+
+            conn.Close();
+
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = "DELETE FROM Clienti where IdCliente = @id";
