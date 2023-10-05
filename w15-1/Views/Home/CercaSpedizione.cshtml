@@ -1,0 +1,45 @@
+﻿<link href="~/Content/cercaspedizione.css" rel="stylesheet" />
+@model w15_1.Models.Spedizioni
+@{
+    ViewBag.Title = "CercaSpedizione";
+}
+<link href="~/Content/Cliente.css" rel="stylesheet" />
+<h2 class="text-center">CercaSpedizione</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div id="Form" class="  border border-primary text-white rounded-3 mt-4 p-3 mx-auto w-50 d-flex flex-column justify-content-center">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group mx-auto ">
+            @Html.LabelFor(model => model.IdSpedizione, htmlAttributes: new { @class = "" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IdSpedizione, new { htmlAttributes = new { @class = "" } })
+                @Html.ValidationMessageFor(model => model.IdSpedizione, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mx-auto">
+            @Html.LabelFor(model => model.CodiceFiscale, htmlAttributes: new { @class = "" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CodiceFiscale, new { htmlAttributes = new { @class = "mb-2" } })
+                @Html.ValidationMessageFor(model => model.CodiceFiscale, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mx-auto">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+
+
+
+}
+
+@*<img class="bg-white w-50 m-0   " id="img" src="https://static.vecteezy.com/ti/vettori-gratis/p3/2191988-consegna-camion-icona-spedizione-veloce-consegna-concetto-vettoriale.jpg" alt="Alternate Text" />*@
+

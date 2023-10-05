@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<link href="~/Content/Cliente.css" rel="stylesheet" />
+<link href="~/Controllers/StyleSheet1.css" rel="stylesheet" />
+<main>
+    <section class="row" aria-labelledby="aspnetTitle">
+        <h1 class="text-primary text-center" id="title">SpedizioniByMe</h1>
+        <p class="lead text-center">SpedizioniByMe si occupa di consegne per privati e aziende.</p>
+    </section>
+
+    <div class="row b">
+        <section class="col-md-6 text-light" aria-labelledby="gettingStartedTitle">
+            <div id="Cerca" class="m-2 border border-primary border-3 p-2  d-xl-flex ">
+              
+                <img src="https://dnavstore.it/images/companies/1/tracking.png" id="image" alt="Alternate Text" />
+                       
+                <div>
+                    <h2 class="text-primary mb-5 text-center ">Sei un cliente o un azienda?</h2>
+                    <p class="">
+                        Rintraccia il tuo pacco per essere sempre aggiornato sull'ultimo stato della spedizione.
+                    </p>
+                    <a href="/Home/CercaSpedizione" class="btn btn-primary text-center d-flex m-3 justify-content-center">Rintraccia pacco</a>
+                </div>
+               
+               
+            </div>
+        </section>
+        <section class="col-md-6 text-light text-center " aria-labelledby="librariesTitle">
+            <div id="Admin" class="m-2 border  border-primary border-3 p-2   d-xl-flex align-items-center p-2 bg-black">
+              
+                <img  id="image2"class=" bg-dark mx-auto rounded-pill p-2" src="https://cap-cetcell.in/ay2023/images/admin%20banner.png" alt="Alternate Text" />
+                <div>
+                    <h2 class="text-primary mb-5">Sei un amministratore?</h2>
+                    <p class="mb-5">Accedi alla tua area privata.</p>
+                    <a href="/Home/Login" class="btn btn-primary text-center d-flex m-3 justify-content-center">Accedi alla tu area riservata</a>
+                </div>
+                </div>
+        </section>
+    </div>
+</main>

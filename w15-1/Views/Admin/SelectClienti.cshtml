@@ -1,0 +1,42 @@
+﻿@using w15_1.Models
+@{
+    ViewBag.Title = "SelectClienti";
+}
+<h2 class="text-center mb-3">Registro clienti</h2>
+<table class="table table-bordered border-dark bg-body">
+    <thead>
+        <tr class="bg-primary">
+            <th scope="col">Nome</th>
+            <th scope="col">Indirizzo</th>
+            <th scope="col">Città</th>
+            <th scope="col">CodiceFiscale</th>
+            <th scope="col">Partita iva</th>
+            <th scope="col">Azienda</th>
+            <th scope="col">Numero identificativo cliente</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    @foreach (Clienti s in Model)
+    {
+
+        <tbody>
+            <tr>
+                <td>@s.Nome</td>
+                <td>@s.Indirizzo</td>
+                <td>@s.Città</td>
+                <td>@s.CodiceFiscale</td>
+                <td>@s.PartitaIva</td>
+                <td>@s.IsAzienda</td>
+                <td>@s.IdCliente</td>
+                <td> <a href="/Admin/DeleteClienti?Id=@s.IdCliente" class="btn btn-primary">Elimina</a></td>
+                <td>  <a href="/Admin/EditClienti?Id=@s.IdCliente" class="btn btn-primary">Modifica</a></td>
+            </tr>
+        </tbody>
+
+    }
+</table>
+<a href="/Admin/RegistraCliente" class="btn btn-primary">Aggiungi Cliente</a>
+
+
+

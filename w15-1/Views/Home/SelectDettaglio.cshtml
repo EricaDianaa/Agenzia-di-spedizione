@@ -1,0 +1,32 @@
+﻿@model w15_1.Models.Spedizioni
+
+<h2 class="text-center mb-3">Dettagli</h2>
+
+
+@foreach (w15_1.Models.Spedizioni s in w15_1.Models.Spedizioni.spedizioni)
+{
+    <div class="border border-dark rounded-3 text-center bg-info m-3 p-4 ">
+
+
+        <p><strong scope="col">Numero identificativo spedizione: </strong>@s.IdSpedizione</p>
+
+        <p><strong scope="col">Mittente: </strong>@s.NomeCliente</p>
+
+        <p> <strong scope="col">Data spedizione: </strong>@s.DataS</p>
+
+        <p> <strong scope="col">Data presunta consegna: </strong>@s.DataC</p>
+
+        <p>  <strong scope="col">Peso: </strong>@s.Peso</p>
+
+        <p><strong scope="col">Città: </strong>@s.Città</p>
+
+        <p>   <strong scope="col">Indirizzo: </strong>@s.Indirizzo</p>
+
+        <p> <strong scope="col">Nominativo destinatario: </strong>@s.NominativoDestinatario</p>
+
+        <p> <strong scope="col">Costo spedizione: </strong> € @s.CostoSpedizione</p>
+        <a href="/Admin/EditSpedizioni?Id=@s.IdSpedizione" class="btn btn-primary">Modifica</a>
+        <a href="/Admin/DeleteSpedizioni?Id=@s.IdSpedizione" class="btn btn-primary">Elimina</a>
+
+    </div>
+}

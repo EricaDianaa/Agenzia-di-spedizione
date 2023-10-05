@@ -1,0 +1,51 @@
+﻿@using w15_1
+@{
+    ViewBag.Title = "SelectAziende";
+}
+
+<h2>SelectAziende</h2>
+
+<h2 class="text-center mb-3">Registro clienti</h2>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <strong>Nome</strong>
+        </div>
+        <div class="col">
+            <strong>Indirizzo</strong>
+        </div>
+        <div class="col">
+            <strong>Città</strong>
+        </div>
+        <div class="col">
+            <strong>CodiceFiscale</strong>
+        </div>
+        <div class="col">
+            <strong>Numero identificativo cliente</strong>
+        </div>
+    </div>
+</div>
+@foreach (Clienti s in Model)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p>@s.Nome</p>
+            </div>
+            <div class="col">
+                <p>@s.Indirizzo</p>
+            </div>
+            <div class="col">
+                <p>@s.Città</p>
+            </div>
+            <div class="col">
+                <p>@s.CodiceFiscale</p>
+            </div>
+            <div class="col">
+                <p>@s.IdCliente</p>
+            </div>
+        </div>
+    </div>
+}
+
+<a href="/Admin/RegistraCliente" class="btn btn-primary">Aggiungi Cliente</a>

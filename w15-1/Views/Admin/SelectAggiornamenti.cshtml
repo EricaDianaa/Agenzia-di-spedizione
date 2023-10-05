@@ -1,0 +1,37 @@
+﻿@using w15_1.Models
+@{
+    ViewBag.Title = "SelectAggiornamenti";
+}
+
+
+<h2 class="text-center mb-3">Registro aggiornamenti</h2>
+<table class="table table-bordered border-dark bg-body">
+    <thead>
+        <tr class="bg-primary">
+            <th scope="col">Stato spedizione</th>
+            <th scope="col">Luogo</th>
+            <th scope="col">Descrizione</th>
+            <th scope="col">Data e ora </th>
+            <th scope="col">Numero identificativo spedizione</th>
+
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    @foreach (Aggiornamenti s in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@s.Nomestato</td>
+                <td>@s.Luogo</td>
+                <td>@s.Descrizione</td>
+                <td>@s.DataOraAggiornamento</td>
+                <td>@s.IdSpedizioni</td>
+                <td><a href="/Admin/DeleteAggiornamenti?Id=@s.IdAggiornamento" class="btn btn-primary">Elimina</a></td>
+                <td> <a href="/Admin/EditAggiornamenti?Id=@s.IdAggiornamento&IdS=@s.IdSpedizioni" class="btn btn-primary">Modifica</a></td>
+            </tr>
+        </tbody>
+      
+    }
+
+</table>

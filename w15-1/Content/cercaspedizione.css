@@ -1,0 +1,51 @@
+﻿body {
+
+}
+
+@keyframes Furgone {
+    0%{
+       
+        transform:translate(100px,50px)
+    }
+    50% {
+        transform: translate(200px,50px) ;
+       
+    }
+    100% {
+        transform: translate(2000px,50px);
+        display:none;
+
+    }
+}
+
+/*@keyframes Form {
+    0% {
+        display:none;
+        transform: translate(-1000px,-100px)
+    }
+
+    50% {
+        display: none;
+        transform: translate(-500px,-140px)
+    }
+
+    100% {
+        display:block;
+        transform: translate(0px,-350px)
+    }
+}*/
+
+#img{
+    animation: Furgone 3s linear 0s forwards;
+}
+
+/*#Form {
+    animation: Form 3s linear 0s forwards;
+}*/
+
+/*#form{
+    position:absolute;
+    top:130px;
+    right:200px;
+}*/
+

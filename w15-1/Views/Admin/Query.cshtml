@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Query";
+}
+
+<h2>Query</h2>
+
+<button id="Carica" class="btn btn-primary "> Consegna data odierna</button>
+<div class="container">
+
+    <div class="row" id="List">
+
+    </div>
+
+</div>
+
+
+<button id="Carica1" class="btn btn-primary mt-3"> Totali consegne</button>
+<div class="container">
+
+    <div class="row" id="List1">
+
+    </div>
+</div>
+
+<button id="Carica2" class="btn btn-primary mt-3"> Totali consegne per città</button>
+<div class="container">
+
+    <div class="d-flex flex-column" id="List2">
+
+    </div>
+</div>
+
+
+
+
+  
+
+
+@section scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            //Data
+            $("#Carica").click(function () {
+                $("#List").empty().slideToggle();
+                $.ajax({
+                    method: "Get",
+                    url: "SelectData",
+                    success: function (listadata) {
+                        console.log(listadata)
+                        $.each(listadata, function (i, v) {
+                            var licurrent =
+                                "<table class='table table-bordered border-dark bg-body mt-3'> <thead> <tr>  <th scope='col'>IdSpedizione</th><th scope='col'>Data Spedizione</th><th scope='col'>Data Consegna</th><th scope='col'>Peso</th><th scope='col'>Città</th><th scope='col'>Indirizzo</th><th scope='col'>Destinatario</th><th scope='col'>Costo spedizione</th></tr></thead> <tbody><tr><td>" + v.IdSpedizione + "</td> " +
+                                "<td>" + v.DataJson + "</td> " +
+                                "<td>" + v.DataJson2 + "</td> " +
+                                "<td>" + v.Peso + "</td> " +
+                                "<td>" + v.Città + "</td> " +
+                                "<td>" + v.Indirizzo + "</td> " +
+                                "<td>" + v.NominativoDestinatario + "</td> " +
+                                "<td>" + v.CostoSpedizione + "</td></tr></tbody></table>";
+                            $("#List").append(licurrent);
+                        }
+                        )
+                    }
+                });
+            })
+
+            //TotConsegna
+
+            $("#Carica1").click(function () {
+                $("#List1").empty().slideToggle();
+                $.ajax({
+                    method: "Get",
+                    url: "SelectTotConsegna",
+                    success: function (list) {
+                        console.log(list)
+                        $.each(list, function (i, v) {
+                            var Tot = "<div class='col border der-dark bg-white mt-3 rounded-3 w-25'><p><strong>numero delle spedizioni totali in attesa di consegna:</strong> " + v.Totale + "</p> </div> "
+                            $("#List1").append(Tot);
+                        }
+                        )
+                    }
+                });
+            })
+
+            //TotConsegnaCittà
+            $("#Carica2").click(function () {
+                $("#List2").empty().slideToggle();
+                $.ajax({
+                    method: "Get",
+                    url: "SelectTotCittà",
+                    success: function (list) {
+                        console.log(list)
+                        $.each(list, function (i, v) {
+                            var Tot = "<div class='d-flex  border der-dark bg-white mt-3 w-25  rounded-3'> <p class='me-2'><strong>Totale:</strong> " + v.Totale + "</p> <p><strong>Città</strong> " + v.Città + "</p> </div> ";
+                            $("#List2").append(Tot);
+                        }
+                        )
+                    }
+                });
+            })
+        })
+    </script>
+
+}
+
+
+
+
+
+
+
+

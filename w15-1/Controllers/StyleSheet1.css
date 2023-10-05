@@ -1,0 +1,26 @@
+﻿body {
+
+}
+
+#Cerca {
+    background-color:black;
+/*    background-image: url(https://dnavstore.it/images/companies/1/tracking.png);*/
+    background-repeat:no-repeat;
+    background-size:contain;
+    border-radius:50px;
+}
+#Admin {
+    background-color: black;
+   
+    border-radius: 50px;
+}
+#Cerca:hover,#Admin:hover {
+   transform:scale(1.1)
+}
+#image {
+    background-size: contain;
+  
+}
+#image2{
+    height:250px
+}

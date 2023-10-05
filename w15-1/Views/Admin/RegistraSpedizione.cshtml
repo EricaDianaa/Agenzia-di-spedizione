@@ -1,0 +1,82 @@
+﻿@model w15_1.Models.Spedizioni
+@{
+    ViewBag.Title = "RegistraSpedizione";
+}
+<link href="~/Content/Cliente.css" rel="stylesheet" />
+<h2 class=" text-center">RegistraSpedizione</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div id="Form" class="  border border-primary rounded-3 mt-4 p-3 mx-auto w-50 d-flex flex-column text-center  text-white justify-content-center">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group mx-auto">
+            @Html.LabelFor(model => model.Cliente, htmlAttributes: new { @class = "" })
+            <div class="col-md-10">
+                @Html.DropDownList("Cliente", new SelectList(ViewBag.drop1, "Value", "text"));
+                @Html.ValidationMessageFor(model => model.Cliente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group mx-auto">
+            @Html.LabelFor(model => model.DataSpedizione, htmlAttributes: new { @class = "" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataSpedizione, new { htmlAttributes = new { @class = "mb-2", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.DataSpedizione, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group mx-auto">
+            @Html.LabelFor(model => model.Peso, htmlAttributes: new { @class = "" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Peso, new { htmlAttributes = new { @class = "mb-2" } })
+                @Html.ValidationMessageFor(model => model.Peso, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group mx-auto">
+            @Html.LabelFor(model => model.Città, htmlAttributes: new { @class = "" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Città, new { htmlAttributes = new { @class = "mb-2" } })
+                @Html.ValidationMessageFor(model => model.Città, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group mx-auto">
+            @Html.LabelFor(model => model.Indirizzo, htmlAttributes: new { @class = "" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Indirizzo, new { htmlAttributes = new { @class = "mb-2" } })
+                @Html.ValidationMessageFor(model => model.Indirizzo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group mx-auto">
+            @Html.LabelFor(model => model.NominativoDestinatario, htmlAttributes: new { @class = "" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NominativoDestinatario, new { htmlAttributes = new { @class = "mb-2" } })
+                @Html.ValidationMessageFor(model => model.NominativoDestinatario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group mx-auto">
+            @Html.LabelFor(model => model.CostoSpedizione, htmlAttributes: new { @class = "" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CostoSpedizione, new { htmlAttributes = new { @class = "mb-2", @type = "number" } })
+                @Html.ValidationMessageFor(model => model.CostoSpedizione, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group mx-auto">
+            @Html.LabelFor(model => model.DataConsegna, htmlAttributes: new { @class = "" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataConsegna, new { htmlAttributes = new { @class = "mb-2", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.DataConsegna, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mx-auto">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+
+
+
+}

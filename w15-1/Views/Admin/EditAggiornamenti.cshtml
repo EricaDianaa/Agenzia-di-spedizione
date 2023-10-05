@@ -1,0 +1,55 @@
+﻿@model w15_1.Models.Aggiornamenti
+@{
+    ViewBag.Title = "EditAggiornamenti";
+}
+
+<h2 class="text-center">Modifica aggiornamenti</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div id="Form" class="  border border-primary text-white rounded-3 mt-4 p-3 mx-auto w-50 d-flex flex-column justify-content-center">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group mx-auto">
+            @Html.LabelFor(model => model.StatoSpedizione, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Stato", new SelectList(ViewBag.drop1, "Value", "text"));
+                @Html.ValidationMessageFor(model => model.StatoSpedizione, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group mx-auto">
+            @Html.LabelFor(model => model.Luogo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Luogo, new { htmlAttributes = new { @class = "mb-2" } })
+                @Html.ValidationMessageFor(model => model.Luogo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group mx-auto">
+            @Html.LabelFor(model => model.Descrizione, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Descrizione, new { htmlAttributes = new { @class = "mb-2" } })
+                @Html.ValidationMessageFor(model => model.Descrizione, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @*<div class="form-group mx-auto">
+                @Html.LabelFor(model => model.IdSpedizioni, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdSpedizioni, new { htmlAttributes = new { @class = "mb-2" } })
+                    @Html.ValidationMessageFor(model => model.IdSpedizioni, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+
+        <div class="form-group mx-auto">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+
+
+
+}

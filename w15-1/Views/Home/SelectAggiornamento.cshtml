@@ -1,0 +1,26 @@
+﻿@using w15_1.Models
+
+    <table class="table table-bordered border-dark bg-body ">
+        <thead>
+            <tr class="bg-primary">
+                <th scope="col">Stato Spedizione</th>
+                <th scope="col">Luogo</th>
+                <th scope="col">Descrizione</th>
+                <th scope="col">Data e ora</th>
+                <th scope="col">Numero identificativo spedizione</th>
+
+            </tr>
+        </thead>
+        @foreach (Aggiornamenti s in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@s.Nomestato</td>
+                    <td>@s.Luogo</td>
+                    <td>@s.Descrizione</td>
+                    <td>@s.DataOraAggiornamento</td>
+                    <td>@s.IdSpedizioni</td>
+                </tr>
+            </tbody>
+        }
+    </table>

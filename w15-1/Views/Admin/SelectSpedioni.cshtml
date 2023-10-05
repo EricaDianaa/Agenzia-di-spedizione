@@ -1,0 +1,43 @@
+﻿@using w15_1.Models
+@{
+    ViewBag.Title = "SelectSpedioni";
+}
+
+<h2 class="text-center mb-3">Registro spedizioni</h2>
+<table class="table table-bordered border-dark bg-body">
+    <thead>
+        <tr class="bg-primary">
+            <th scope="col">Numero identificativo spedizione</th>
+            <th scope="col">Mittente</th>
+            <th scope="col">Data spedizione</th>
+            <th scope="col">Città</th>
+            <th scope="col">Indirizzo</th>
+            <th scope="col">Nominativo destinatario</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+
+        </tr>
+    </thead>
+    @foreach (Spedizioni s in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@s.IdSpedizione</td>
+                <td>@s.NomeCliente</td>
+                <td>@s.DataS</td>
+                <td>@s.Città</td>
+                <td>@s.Indirizzo</td>
+                <td>@s.NominativoDestinatario</td>
+
+                <td>  <a href="/Admin/SelectAggiornamentowhereid?Id=@s.IdSpedizione" class="btn btn-primary">Dettagli</a></td>
+
+                <td>  <a href="/Admin/RegistraAggiornamenti?Id=@s.IdSpedizione" class="btn btn-primary">Aggiungi Aggiornamento</a></td>
+
+            </tr>
+        </tbody>
+                 
+               
+
+    }
+    </table>
+    <a href="/Admin/RegistraSpedizione" class="btn btn-primary">Aggiungi Spedizione</a>
